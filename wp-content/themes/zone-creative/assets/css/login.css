@@ -1,0 +1,72 @@
+/** This css is only active on the wp-login and register pages **/
+body.login {
+    background: #fff;
+}
+body.login div#login h1 a {
+    background-image: url('../../assets/img/zone-logo.png');
+    background-size: contain;
+    width: 80%;
+    margin-bottom: 0px;
+}
+.submit .button {
+    background: #14181B!important;
+    box-shadow: none!important;
+    text-shadow: none!important;
+    font-family: 'Arial';
+    letter-spacing: 0px;
+    color: #fff;
+    border: 1px solid #14181B;
+}
+.submit .button:hover,
+.submit .button:focus,
+.submit .button:active {
+    background: #fff!important;
+    color: #14181B!important;
+}
+.login form {
+    border: 1px solid #14181B!important;
+    box-shadow: none!important;
+    color: #14181B!important;
+    margin-bottom: 20px;
+}
+#login p#nav, 
+#login p#backtoblog  {
+    background: #fff;
+    margin: 0px!important;
+    padding: 0 0px 10px 0px !important;
+}
+#login p#nav a, 
+#login p#backtoblog a {
+    color: #14181B;
+}
+#login p#nav a:hover,
+#login p#nav a:focus,
+#login p#nav a:active, 
+#login p#backtoblog a:hover,
+#login p#backtoblog a:active,
+#login p#backtoblog a:focus {
+    text-decoration: underline;
+}
+.login form .input, .login input[type="password"], .login input[type="text"], .login input[type="checkbox"] {
+    border-color: #14181B!important;
+    border-radius: 0px!important;
+}
+.login #login_error, .login .message, .login .success {
+    margin-top: 20px;
+    box-shadow: none;
+    border: 1px solid #14181B;
+    border-left: 5px solid #14181B;
+    color: #14181B;
+}
+.wp-core-ui .button-secondary {
+    color: #14181B!important;
+}
+a {
+    color: #14181B;
+}
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: #000;
+}

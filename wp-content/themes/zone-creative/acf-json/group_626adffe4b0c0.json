@@ -1,0 +1,89 @@
+{
+    "key": "group_626adffe4b0c0",
+    "title": "Tips",
+    "fields": [
+        {
+            "key": "field_626ae010ef603",
+            "label": "Headings and Text Content",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use a carrot (^) to force new lines in text inputs",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_626c086cf684b",
+            "label": "Band Padding",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "You can define padding explicitly using 1rem 1rem 1rem 1rem or shorthand, 1rem 1rem. Explicit padding starts at the top and moves clockwise, top right bottom left. Shorthand adds the same for top and bottom, then sides.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "work"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1651247333
+}

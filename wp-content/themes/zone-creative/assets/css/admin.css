@@ -1,0 +1,75 @@
+/** This css is only active on the wp-admin **/
+a:focus, a:active, a:hover {
+    text-decoration: none;
+}
+.notice-success, div.updated {
+    border-color: #14181B;
+    border-left-color: #14181B;
+}
+.notice-dismiss,
+#bulk-titles div a::before, .notice-dismiss::before, .tagchecklist .ntdelbutton .remove-tag-icon::before, .welcome-panel .welcome-panel-close::before,
+.wp-core-ui .button-link, a, #dashboard_right_now .search-engines-info::before, #dashboard_right_now li a::before, #dashboard_right_now li span::before, .welcome-panel .welcome-icon::before {
+    color: #14181B;
+}
+a:focus, a:active, a:hover, .wp-core-ui .button-link:active, .wp-core-ui .button-link:hover {
+    color:#78787D;
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+.acf-fc-popup a:hover {
+    background: #404346!important;
+}
+body,
+#major-publishing-actions {
+    background-color: #fff;
+}
+#major-publishing-actions {
+    border-top: none;
+}
+.wp-core-ui .button, .wp-core-ui .button-secondary,
+.wrap .add-new-h2, .wrap .add-new-h2:active, .wrap .page-title-action, .wrap .page-title-action:active {
+    color: #14181B;
+    border-color: #14181B;
+    background: #fff;
+}
+.wp-core-ui .button-secondary:hover, .wp-core-ui .button.hover, .wp-core-ui .button:hover,
+.wrap .add-new-h2:hover, .wrap .page-title-action:hover,
+.wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active,
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+    color: #fff;
+    border-color: #14181B;
+    background: #14181B;
+}
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
+    box-shadow: 0 0 0 1px #fff,0 0 0 3px #14181B;
+}
+#adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus {
+    background: #404346;
+}
+#adminmenu li a:focus div.wp-menu-image::before, #adminmenu li.opensub div.wp-menu-image::before, #adminmenu li:hover div.wp-menu-image::before,
+#adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus,
+#adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover, #adminmenu li.menu-top > a:focus,
+#collapse-button:hover {
+    color: #fff;
+}
+.plugin-update-tr.active td, .plugins .active th.check-column {
+    border-left: 4px solid #14181B;
+}
+.plugins .active td, .plugins .active th {
+    background-color: #F6F4F4;
+    background-color: #FFF;
+}
+.theme-browser .theme.add-new-theme a:focus::after, .theme-browser .theme.add-new-theme a:hover::after {
+    border-color: transparent;
+    background: #14181B;
+}
+.theme-browser .theme.add-new-theme a:focus span::after, .theme-browser .theme.add-new-theme a:hover span::after {
+    color:#14181B;
+}
+input[type="checkbox"]:checked::before { 
+    filter: brightness(0%);
+}
+input[type="checkbox"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="radio"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, select:focus, textarea:focus {
+    border-color: #14181B;
+    box-shadow: none;
+    outline: 2px solid transparent;
+}

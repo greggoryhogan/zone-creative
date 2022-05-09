@@ -1,0 +1,403 @@
+@import 'variables';
+
+.flexible-content {
+    h1, .font-biggest {
+        font-size: 7rem;
+        line-height: 7rem;
+        letter-spacing: -2px;
+        max-width: 80%;
+        margin: 1rem 0 1rem 0;
+        @media all and (max-width: $tablet) { 
+            font-size: 5rem;
+            line-height: 5rem;
+        }
+        @media all and (max-width: $mobile) { 
+            font-size: 3.375rem;
+            line-height: 3.375rem;
+        }
+    }
+    h2, .font-bigger {
+        font-size: 3rem;
+        line-height: 3rem;
+        margin: 2rem 0;
+        @media all and (max-width: $tablet) { 
+            font-size: 2.25rem;
+            line-height: 2.25rem;
+        }
+        @media all and (max-width: $mobile) { 
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+        }
+    }
+    h3, .font-normal {
+        font-size: 1.7rem;
+        line-height: 1.7rem;
+        margin: 1.5rem 0;
+        @media all and (max-width: $mobile) { 
+            font-size: 1.25rem;
+            line-height: 1.25rem;
+        }
+    }
+    h4, .font-smaller {
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+        margin: 1.5rem 0;
+        @media all and (max-width: $mobile) { 
+            font-size: 1rem;
+            line-height: 1rem;
+        }
+    }
+    h5, .font-smallest {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin: 1rem 0;
+        @media all and (max-width: $mobile) { 
+            font-size: .9rem;
+            line-height: .9rem;
+        }
+    }
+    .btn {
+        display: inline-block;
+        color: $black;
+        background:$white;
+        border: 2px solid $gray;
+        padding: $gutter-sm * .5 $gutter;
+        border-radius: $gutter;
+        font-size: .9rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: .2s border-color;
+        margin-top: $gutter-sm;
+        &:hover,
+        &:active,
+        &:focus {
+            border-color: $black;
+        }
+    }
+    @media all and (min-width: $tablet) {
+        span.br {
+            display: block;
+        }
+    }
+    
+    &.eyebrow {
+        display: flex;
+        justify-content: space-between;
+        border-top: 2px solid $black;
+        border-bottom: 1px solid $gray;
+        padding: 1rem 0;
+        margin: 2rem 0;
+        @media (max-width: $mobile) {
+            font-size: .9rem;
+            margin: 1rem 0;
+        }
+        .text-left {
+            font-weight: bold;
+        }
+        .text-right {
+            font-weight: 100;
+        }
+    }
+    /*&.text-w-image {
+        @media (min-width: $mobile) {
+            display: flex;
+            align-items: center;
+            div {
+                flex: 1;
+                &.image {
+                    width: 50%;
+                    padding-right: $gutter;
+                }
+            }
+            &.image-right {
+                flex-direction: row-reverse;
+                .image {
+                    padding-left: $gutter;
+                    padding-right: 0;
+                }
+            }
+            h2{
+                margin-top: 0;
+            }
+        }        
+    }*/
+    &.two-column-content {
+        @media (min-width: $mobile) {
+            display: flex;
+            &.align-top {
+                align-items: start;
+            }
+            &.align-middle {
+                align-items: center;
+            }
+            &.align-bottom {
+                align-items: end;
+            }
+            > div {
+                flex: 1;
+                width: 50%;
+                padding-right: 1rem;
+                &.right {
+                    width: 50%;
+                    padding-left: 1rem;
+                    padding-right: 0;
+                }
+            }
+            &.row-reverse {
+                flex-direction: row-reverse;
+                div {
+                    padding-right: 0;
+                    padding-left: 1rem;
+                    &.right {
+                        width: 50%;
+                        padding-right: 1rem;
+                        padding-left: 0;
+                    }
+                }
+            }
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+        h1,h2,h3,h4,h5 {
+            margin-top: 0;
+        }
+        .subheading {
+            margin-top: -$gutter-sm!important;
+            margin-bottom: $gutter;
+        }
+        h3:first-of-type,
+        p:first-of-type {
+            margin-top: 0;
+        }
+        .btn {
+            margin-top: $gutter;
+        }
+        .image {
+            width: auto;
+            &.full-width {
+                img {
+                    width: 100%;
+                }
+            }
+            margin-bottom: $gutter;
+                @media all and (min-width: $mobile) { 
+                &.no-margin {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .top-border {
+            border-top: 1px solid $gray;
+            margin-bottom: $gutter;
+            width: 100%;
+            &.no-border {
+                display: none;
+            }
+        }
+        @media all and (max-width: $mobile) { 
+            .right {
+                .hide-second-border {
+                    display: none;
+                }
+                .image {
+                    margin-top: $gutter;
+                }
+            }
+            .contain-content {
+                max-width: 100%!important;
+            }
+        }
+    }
+    &.image-module {
+        &.auto-width {
+            div {
+                width: auto;
+                display: inline-block;
+            }
+            img {
+                display: block;
+                width: auto;
+            }
+        }
+        &.full-width {
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+    &.align-left {
+        text-align: left;
+    }
+    &.align-center {
+        text-align: center;
+    }
+    &.align-right {
+        text-align: right;
+    }
+    &.cta-buttons {
+        .btn {
+            margin: 0 .5 * $gutter-sm;
+        }
+        &.align-left {
+            .btn:first-of-type {
+                margin-left: 0;
+            }
+        }
+        &.align-right {
+            .btn:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    &.features-list {
+        .feature-row {
+            padding: $gutter 0;
+            &:first-of-type {
+                padding-top: 0;
+            }
+            border-bottom: 1px solid $gray;
+            @media all and (min-width: $mobile) { 
+                display: flex;
+                align-items:flex-start;
+            }
+            div {
+                flex: 1;
+                &.feature-heading {
+                    @media all and (min-width: $mobile) { 
+                        width: 50%;
+                        padding-right: $gutter;
+                    }
+                    h3 {
+                        margin-top: 0;
+                        @media all and (min-width: $mobile) { 
+                            margin-bottom: 0;
+                        }
+                    }
+                    .categories {
+                        margin-top: $gutter-sm;
+                        color: $light-gray;
+                        font-size: .9rem;
+                    }
+                }
+                @media all and (min-width: $tablet) { 
+                    &.feature-content {
+                        color: $dark-gray;
+                        p {
+                            margin-top: 0;
+                        }
+                        &.has-link {
+                            display: grid;
+                            grid-template-columns: auto 40%;
+                            .link {
+                                text-align: right;
+                                .btn {
+                                    margin-top: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.top-border {
+            border-top: 1px solid $gray;
+            padding-top: $gutter;
+        }
+        &.no-bottom-border {
+            .feature-row {
+                &:last-of-type {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+    &.posts {
+        &.grid {
+            @media all and(min-width: $mobile) {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                gap: $gutter-sm;
+            }
+            .grid-item {
+                position: relative;
+                padding-bottom: 100%;
+                overflow: hidden;
+                @media all and(max-width: $mobile) {
+                    margin-bottom: $gutter-sm;
+                }
+                .grid-image {
+                    background: #ccc;
+                    background-size: cover;
+                    background-position: center center;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+                .grid-hover {
+                    background: $black;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: .2s opacity;
+                    z-index: 2;
+                }
+                .grid-content {
+                    position: absolute;
+                    bottom: $gutter;
+                    width: calc(100% - #{$gutter * 2});
+                    left: $gutter;
+                    z-index: 3;
+                    color: $white;
+                    @media all and(min-width: $mobile) {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: end;
+                        .read-more {
+                            margin-left: $gutter;
+                        }
+                    }
+                    .grid-heading {
+                        flex: 1;
+                        h3 {
+                            margin: 0;
+                        }
+                    }
+                    .read-more {
+                        text-decoration: underline;
+                        margin-top: $gutter-sm;
+                    }
+                }
+                a {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 4;
+                }
+                &:hover,
+                &:focus,
+                &:active {
+                    .grid-hover {
+                        opacity: .8;
+                    }
+                    .read-more {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+    &.hr {
+        height: 1px;
+        background-color: $gray;
+    }
+}
