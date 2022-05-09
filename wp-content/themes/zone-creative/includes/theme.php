@@ -87,13 +87,15 @@ add_filter( 'get_the_excerpt', 'zone_excerpt_filter' );
  */
 add_action('zone_body_open','zone_maintenance_notice',1);
 function zone_maintenance_notice() {
-    if(function_exists('get_field')) {
-        $maintenance_notice_active = get_field('maintenance_notice_active','option');
-        if($maintenance_notice_active == 'yes') {
-            echo '<div class="zone-maintenance-mode">';
-                echo '<div class="container"><img src="'.ZONE_THEME_URI.'/assets/img/zone-logo.png" /></div>';
-                echo '<div class="container">'.get_field('maintenance_notice','option').'</div>';
-            echo '</div>';
+    if(get_current_user_id() <= 0) {
+        if(function_exists('get_field')) {
+            $maintenance_notice_active = get_field('maintenance_notice_active','option');
+            if($maintenance_notice_active == 'yes') {
+                echo '<div class="zone-maintenance-mode">';
+                    echo '<div class="container"><img src="'.ZONE_THEME_URI.'/assets/img/zone-logo.png" /></div>';
+                    echo '<div class="container">'.get_field('maintenance_notice','option').'</div>';
+                echo '</div>';
+            }
         }
     }
 }
