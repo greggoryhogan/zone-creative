@@ -20,6 +20,23 @@
             "esc_html": 0
         },
         {
+            "key": "field_627964e12870e",
+            "label": "Empty Space in Inputs",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use the [space] shortcode to add extra spacing inline.\r\nOptions: \r\nheight: 1rem\r\ndisplay:everywhere\/desktop-only\/tablet-only\/mobile-only\r\n\r\n[space height=\"1rem\" display=\"mobile-only\"]",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_626c086cf684b",
             "label": "Band Padding",
             "name": "",
@@ -85,5 +102,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1651247333
+    "modified": 1652122965
 }

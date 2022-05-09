@@ -99,3 +99,12 @@ function zone_maintenance_notice() {
         }
     }
 }
+
+add_shortcode('space','space_shortcode');
+function space_shortcode($atts) {
+    $atts = shortcode_atts( array(
+        'height' => '1rem',
+        'display' => '',
+    ), $atts );
+    return '<span class="zone-spacer '.$atts['display'].'" style="height:'.$atts['height'].'"></span>';
+}

@@ -3,6 +3,25 @@
     "title": "Post Options",
     "fields": [
         {
+            "key": "field_6279668a9daac",
+            "label": "Subheading",
+            "name": "subheading",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_627174eed68e2",
             "label": "Excerpt",
             "name": "excerpt",
@@ -54,5 +73,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1651602795
+    "modified": 1652123307
 }

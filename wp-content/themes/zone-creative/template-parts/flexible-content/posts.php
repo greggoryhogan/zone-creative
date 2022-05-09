@@ -50,6 +50,9 @@ switch ($display) {
     case 'list':
         $wrapper_class = 'features-list no-bottom-border';
         break;
+    case 'content-w-image':
+        $wrapper_class = 'content-w-image features-list no-bottom-border';
+        break;
     default:
         $wrapper_class = 'grid';
         break;
@@ -65,7 +68,8 @@ echo '<div class="flexible-content posts '.$wrapper_class.'">';
         while( $post_query->have_posts() ) : $post_query->the_post();
             $post_id = get_the_ID();
             $heading = get_the_title();
-            $content = get_the_excerpt();    
+            $content = get_the_excerpt(); 
+            $subheading = get_field('subheading');
             $link = get_the_permalink();
             $categories = get_the_terms($post,$taxonomy);
             if(is_array($categories)) {
@@ -116,6 +120,30 @@ echo '<div class="flexible-content posts '.$wrapper_class.'">';
                             echo '<div class="read-more">'.$read_more_text.'</a></div>';
                         echo '</div>';
                     echo '</div>';
+                    break;
+                case 'content-w-image':
+                    echo '<div class="feature-row">';
+                    echo '<a class="block-link" href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
+                    if($heading != '') {
+                        echo '<div class="feature-heading">';
+                            
+                                echo '<h3 class="font-bigger">'.zone_content_filters($heading).'</h3>';
+                            
+                            if($subheading != '') {
+                                echo '<div class="categories">'.zone_content_filters($subheading).'</div>';
+                            }
+                            echo '<div class="link">';
+                                echo '<a class="btn" href="'.esc_url( $link ).'" title="View '.$heading.'">'.$read_more_text.'</a>';
+                            echo '</div>';
+                        echo '</div>';
+                    }
+                    if(has_post_thumbnail()) {
+                        echo '<div class="feature-image">';
+                            echo '<div class="feature-overlay"></div>';
+                            echo '<div class="image-container" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-hero').');"></div>';
+                        echo '</div>';
+                    }
+                echo '</div>';
                     break;
             }
         endwhile;
