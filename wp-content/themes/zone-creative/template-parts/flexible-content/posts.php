@@ -123,11 +123,10 @@ echo '<div class="flexible-content posts '.$wrapper_class.'">';
                     break;
                 case 'content-w-image':
                     echo '<div class="feature-row">';
-                    echo '<a class="block-link" href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
                     if($heading != '') {
                         echo '<div class="feature-heading">';
                             echo '<h3 class="font-bigger">';
-                                echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'" class="block-link">';
+                                echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'">';
                                     echo zone_content_filters($heading);
                                 echo '</a>';
                             echo '</h3>';
