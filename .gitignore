@@ -113,3 +113,7 @@ wp-content/mu-plugins/wpe-wp-sign-on-plugin*
 *.asf
 *.wmv
 *.avi
+
+#Zone specific
+node_modules/
+package-lock.json
