@@ -41,5 +41,14 @@
                 scrollLogo(st);
             });      
         }  
+
+        //Works Content-w-image hover effect
+        $('.content-w-image .feature-heading a').hover(
+            function() {
+                $( this ).parent().parent().parent().find('.feature-image').addClass('is-hovered');
+            }, function() {
+                $( this ).parent().parent().parent().find('.feature-image').removeClass('is-hovered');
+            }
+        );
     });
 })(jQuery); // Fully reference jQuery after this point.

@@ -126,9 +126,11 @@ echo '<div class="flexible-content posts '.$wrapper_class.'">';
                     echo '<a class="block-link" href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
                     if($heading != '') {
                         echo '<div class="feature-heading">';
-                            
-                                echo '<h3 class="font-bigger">'.zone_content_filters($heading).'</h3>';
-                            
+                            echo '<h3 class="font-bigger">';
+                                echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'" class="block-link">';
+                                    echo zone_content_filters($heading);
+                                echo '</a>';
+                            echo '</h3>';
                             if($subheading != '') {
                                 echo '<div class="categories">'.zone_content_filters($subheading).'</div>';
                             }
@@ -139,7 +141,7 @@ echo '<div class="flexible-content posts '.$wrapper_class.'">';
                     }
                     if(has_post_thumbnail()) {
                         echo '<div class="feature-image">';
-                            echo '<div class="feature-overlay"></div>';
+                            echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
                             echo '<div class="image-container" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-hero').');"></div>';
                         echo '</div>';
                     }

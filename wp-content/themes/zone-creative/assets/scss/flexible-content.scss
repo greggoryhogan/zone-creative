@@ -407,13 +407,12 @@
         &.content-w-image {
             &.features-list {
                 .feature-row {
-                    position: relative;
                     .feature-image {
                         width: 100%;
                         padding-bottom: 26%;
                         position: relative;
                         overflow: hidden;
-                        .feature-overlay {
+                        a {
                             position: absolute;
                             width: 100%;
                             height: 100%;
@@ -437,34 +436,20 @@
                             z-index: 1;
                             
                         }
-                        
+                        &.is-hovered,
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            .image-container {
+                                transform: scale(1.05);
+                            }
+                            a {
+                                opacity: .7
+                            }
+                        }
                     }
                     .link {
                         margin-top: $gutter;
-                    }
-                    .block-link {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        z-index: 3;
-                    }
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        a {
-                            text-decoration: none;
-                        }
-                        .btn {
-                            border-color: $black;
-                        }
-                        .image-container {
-                            transform: scale(1.05);
-                        }
-                        .feature-overlay {
-                            opacity: .7
-                        }
                     }
                 }
             }
