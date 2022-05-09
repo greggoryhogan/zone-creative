@@ -26,7 +26,7 @@ function register_zone_cpts_and_taxonomies() {
 		'show_ui' => true,
 		'show_in_rest' => false,
 		'rest_base' => '',
-		'has_archive' => true,
+		'has_archive' => 'works',
 		'show_in_menu' => true,
 		'exclude_from_search' => false,
 		'capability_type' => 'post',
