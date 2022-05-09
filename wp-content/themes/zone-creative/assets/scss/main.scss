@@ -428,3 +428,32 @@ a:hover {
         }
     }
 }
+.zone-maintenance-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: $black;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    font-family: "NHaasGroteskTXPro-65Md",Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding-top: 3 * $gutter;
+    align-items: center;
+    .container {
+        text-align: center;
+        form {
+            text-align: left;
+            margin-top: $gutter;
+        }
+    }
+    img {
+        width: 90%;
+        max-width: 300px;
+        margin-bottom: $gutter;
+    }
+}
