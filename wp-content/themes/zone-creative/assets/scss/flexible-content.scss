@@ -74,6 +74,9 @@
             border-color: $black;
         }
     }
+    .text-center {
+        text-align: center;
+    }
     @media all and (min-width: $mobile) {
         span.br {
             display: block;
@@ -284,6 +287,9 @@
                         margin-top: $gutter-sm;
                         color: $light-gray;
                         font-size: .9rem;
+                        @media all and (max-width: $mobile) { 
+                            margin-top: -$gutter-sm;
+                        }
                     }
                 }
                 @media all and (min-width: $tablet) { 
@@ -407,10 +413,29 @@
         }
         &.content-w-image {
             &.features-list {
+                .eyebrow {
+                    margin-bottom: 0;
+                }
                 .feature-row {
+                    align-items: center;
+                    @media all and (min-width: $mobile) {
+                        margin-bottom: 2 * $gutter;
+                    }
+                    @media all and (max-width: $mobile) {
+                        display: flex;
+                        flex-direction: column;
+                        flex-direction: column-reverse;
+                    }
+                    &.no-bottom-border {
+                       border-bottom: none;
+                    }
                     .feature-image {
                         width: 100%;
                         padding-bottom: 26%;
+                        @media all and (max-width: $mobile) {
+                            padding-bottom: 52%;
+                            margin-bottom: $gutter;
+                        }
                         position: relative;
                         overflow: hidden;
                         a {
@@ -449,10 +474,24 @@
                             }
                         }
                     }
-                    .link {
-                        margin-top: $gutter;
+                    .feature-heading {
+                        @media all and (min-width: $mobile) {
+                            .link {
+                                margin-top: $gutter;
+                            }
+                        }
+                        @media all and (max-width: $mobile) {
+                            width: 100%;
+                        }
                     }
+                    
                 }
+            }
+        }
+        .load-more-container {
+            .btn {
+                margin-top: 2 * $gutter;
+                cursor: pointer;
             }
         }
     }

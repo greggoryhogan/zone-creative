@@ -2,6 +2,11 @@
 $alignment = get_sub_field('alignment');
 $top_border = get_sub_field('top_border');
 $bottom_border = get_sub_field('bottom_border');
+$column_1_animation = get_sub_field('column_1_animation');
+$column_2_animation = get_sub_field('column_2_animation');
+$column_animation_anchor_placement = get_sub_field('column_animation_anchor_placement');
+$column_animation_easing = get_sub_field('column_animation_easing');
+$column_animation_easinganimation_speed = get_sub_field('column_animation_easinganimation_speed');
 if( have_rows('features') ):
     echo '<div class="flexible-content features-list '.$top_border .' '.$bottom_border.'">';
     while ( have_rows('features') ) : the_row();
@@ -10,12 +15,20 @@ if( have_rows('features') ):
             $content = get_sub_field('content');    
             $link = get_sub_field('link');
             if($heading != '') {
-                echo '<div class="feature-heading"><h3>'.zone_content_filters($heading).'</h3></div>';
+                echo '<div class="feature-heading"';
+                if($column_1_animation != 'none') {
+                    echo ' data-aos="'.$column_1_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                }
+                echo '><h3>'.zone_content_filters($heading).'</h3></div>';
             }
             if($content != '' || $link != '') {
                 echo '<div class="feature-content';
                     if($link) echo ' has-link';
-                echo '">';
+                echo '"';
+                if($column_2_animation != 'none') {
+                    echo ' data-aos="'.$column_2_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                }
+                echo '>';
                 if($content != '') {
                     echo zone_content_filters($content);
                 }

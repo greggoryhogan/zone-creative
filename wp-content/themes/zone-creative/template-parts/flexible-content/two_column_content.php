@@ -14,13 +14,22 @@ $force_images_full_width = get_sub_field('force_images_full_width');
 $row_order = get_sub_field('row_order');
 $top_border = get_sub_field('top_border');
 $vertical_align = get_sub_field('vertical_align');
-$heading_type = get_sub_field('heading_type'); ?>
+$heading_type = get_sub_field('heading_type');
+$column_1_animation = get_sub_field('column_1_animation');
+$column_2_animation = get_sub_field('column_2_animation');
+$column_animation_anchor_placement = get_sub_field('column_animation_anchor_placement');
+$column_animation_easing = get_sub_field('column_animation_easing');
+$column_animation_easinganimation_speed = get_sub_field('column_animation_easinganimation_speed');
+?>
 <div class="flexible-content two-column-content <?php echo $row_order; ?> <?php echo $vertical_align; ?>"><?php
     if($link || $heading != '' || $content != '' || $image) {
         echo '<div';
         if(get_sub_field('limit_text_width') == 'yes') {
             echo ' class="contain-content" style="max-width:'.get_sub_field('content_container_width').'%;"';
         } 
+        if($column_1_animation != 'none') {
+            echo ' data-aos="'.$column_1_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+        }
         echo '>';
             echo '<div class="top-border '.$top_border.'"></div>';
             if($image) {
@@ -52,8 +61,13 @@ $heading_type = get_sub_field('heading_type'); ?>
     if($link2 || $heading2 != '' || $content2 != '' || $image2) {
         echo '<div class="right';
         if(get_sub_field('limit_text_width') == 'yes') {
-            echo ' class="contain-content" style="max-width:'.get_sub_field('content_container_width').'%;"';
-        } 
+            echo ' contain-content" style="max-width:'.get_sub_field('content_container_width').'%;"';
+        } else {
+            echo '"';
+        }
+        if($column_2_animation != 'none') {
+            echo ' data-aos="'.$column_2_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+        }
         echo '">';
             echo '<div class="top-border '.$top_border.'"></div>';
             if($image2) {

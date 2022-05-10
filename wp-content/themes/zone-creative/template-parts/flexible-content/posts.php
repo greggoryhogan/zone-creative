@@ -4,8 +4,16 @@ $query_type = get_sub_field('query_type'); //all, featured or exclude-featured
 $display = get_sub_field('display'); //list grid or content-w-image
 $max_posts = get_sub_field('max_posts'); //default 3
 $show_pagination = get_sub_field('show_pagination'); //true/false
-$read_more_text = get_sub_field('read_more_text');
 $load_more_text = get_sub_field('load_more_text');
+$read_more_text = get_sub_field('read_more_text');
+$teaser_content = get_sub_field('teaser_content');
+$column_1_animation = get_sub_field('column_1_animation');
+$column_2_animation = get_sub_field('column_2_animation');
+$column_animation_anchor_placement = get_sub_field('column_animation_anchor_placement');
+$column_animation_easing = get_sub_field('column_animation_easing');
+$column_animation_easinganimation_speed = get_sub_field('column_animation_easinganimation_speed');
+$container_id = bin2hex(random_bytes(5));
+$heading = get_the_title();
 switch ($post_type) {
     case 'post':
         $taxonomy = 'category';
@@ -14,7 +22,7 @@ switch ($post_type) {
         $taxonomy = 'page-category';
         break;
     case 'work':
-        $taxonomy = 'work-category';
+        $taxonomy = 'work-category'; //or services?
         break;
     default: 
         $taxonomy = 'category';
@@ -57,98 +65,43 @@ switch ($display) {
         $wrapper_class = 'grid';
         break;
 }
-
-echo '<div class="flexible-content posts '.$wrapper_class.'">';
+echo '<div class="flexible-content posts '.$wrapper_class.' '.$show_pagination.'" id="posts-'.$container_id.'" data-page="1" data-url="'.get_permalink().'">';
     $args = array(
         'post_type' => $post_type,
-        'tax_query' => $tax_query
+        'tax_query' => $tax_query,
+        'posts_per_page' => $max_posts
     );
     $post_query = new WP_Query( $args );
     if ( $post_query->have_posts() ) : 
         while( $post_query->have_posts() ) : $post_query->the_post();
-            $post_id = get_the_ID();
-            $heading = get_the_title();
-            $content = get_the_excerpt(); 
-            $subheading = get_field('subheading');
-            $link = get_the_permalink();
-            $categories = get_the_terms($post,$taxonomy);
-            if(is_array($categories)) {
-                $category_string = '';
-                foreach($categories as $category) {
-                    if($category->name != 'Featured') {
-                        $category_string .= $category->name.', ';
-                    }
-                }
-                $category_string = substr($category_string,0,strlen($category_string) - 2);
-            }
-            switch ($display) {
-                case 'list':
-                    echo '<div class="feature-row">';
-                        if($heading != '') {
-                            echo '<div class="feature-heading">';
-                                echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'" class="block-link">';
-                                    echo '<h3>'.zone_content_filters($heading).'</h3>';
-                                echo '</a>';
-                                if($category_string != '') {
-                                    echo '<div class="categories">'.$category_string.'</div>';
-                                }
-                            echo '</div>';
-                        }
-                        if($content != '' || $link != '') {
-                            echo '<div class="feature-content has-link">';
-                                if($content != '') {
-                                    echo zone_content_filters($content);
-                                }
-                                echo '<div class="link">';
-                                    echo '<a class="btn" href="'.esc_url( $link ).'" title="View '.$heading.'">'.$read_more_text.'</a>';
-                                echo '</div>';
-                            echo '</div>';
-                        }
-                    echo '</div>';
-                    break;
-                case 'grid':
-                    echo '<div class="grid-item">';
-                        echo '<a class="grid-link" href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
-                        echo '<div class="grid-image" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-grid').');"></div>';
-                        echo '<div class="grid-hover"></div>';
-                        echo '<div class="grid-content">';
-                            if($heading != '') {
-                                echo '<div class="grid-heading">';
-                                    echo '<h3>'.zone_content_filters($heading).'</h3>';
-                                echo '</div>';
-                            }
-                            echo '<div class="read-more">'.$read_more_text.'</a></div>';
-                        echo '</div>';
-                    echo '</div>';
-                    break;
-                case 'content-w-image':
-                    echo '<div class="feature-row">';
-                    if($heading != '') {
-                        echo '<div class="feature-heading">';
-                            echo '<h3 class="font-bigger">';
-                                echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'">';
-                                    echo zone_content_filters($heading);
-                                echo '</a>';
-                            echo '</h3>';
-                            if($subheading != '') {
-                                echo '<div class="categories">'.zone_content_filters($subheading).'</div>';
-                            }
-                            echo '<div class="link">';
-                                echo '<a class="btn" href="'.esc_url( $link ).'" title="View '.$heading.'">'.$read_more_text.'</a>';
-                            echo '</div>';
-                        echo '</div>';
-                    }
-                    if(has_post_thumbnail()) {
-                        echo '<div class="feature-image">';
-                            echo '<a href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
-                            echo '<div class="image-container" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-hero').');"></div>';
-                        echo '</div>';
-                    }
-                echo '</div>';
-                    break;
-            }
+            echo get_post_list_content(get_the_ID(),$post_type,$taxonomy,$display,$read_more_text,$teaser_content,$column_1_animation,$column_2_animation,$column_animation_anchor_placement,$column_animation_easing,$column_animation_easinganimation_speed,$query_type);
         endwhile;
     else:
         echo '<p>Sorry, there are no '.$post_type.'s to show.</p>';
     endif;
+    wp_reset_query();
 echo '</div>';
+
+if($post_query->max_num_pages > 1 && $show_pagination == 'show-pagination') {
+    echo '<div class="flexible-content posts">';
+        echo '<div class="text-center load-more-container">';
+            echo '<div 
+            class="btn load-more"  
+            data-container-ID="'.$container_id.'" 
+            data-default-text="'.$load_more_text.'"
+            data-taxonomy="'.$taxonomy.'"
+            data-query-type="'.$query_type.'"   
+            data-display="'.$display.'" 
+            data-read-more="'.$read_more_text.'" 
+            data-teaser-content="'.$teaser_content.'" 
+            data-col1-animation="'.$column_1_animation.'" 
+            data-col2-animation="'.$column_2_animation.'" 
+            data-column-animation-anchor-placement="'.$column_animation_anchor_placement.'" 
+            data-column-animation-easing="'.$column_animation_easing.'" 
+            data-column-animation-easinganimation-speed="'.$column_animation_easinganimation_speed.'" 
+            data-post-type="'.$post_type.'" 
+            data-max-posts="'.$max_posts.'" 
+            data-max-pages="'.$post_query->max_num_pages.'">'.$load_more_text.'</div>';
+        echo '</div>';
+    echo '</div>';
+}

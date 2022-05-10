@@ -971,6 +971,27 @@
                             "layout": "block",
                             "prefix_label": 0,
                             "prefix_name": 0
+                        },
+                        {
+                            "key": "field_627a8389e3562",
+                            "label": "Columns Animation",
+                            "name": "columns_animation",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_627a8301b8706"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -1309,6 +1330,27 @@
                             "layout": "block",
                             "prefix_label": 0,
                             "prefix_name": 0
+                        },
+                        {
+                            "key": "field_627a87143cfa8",
+                            "label": "Columns Animation",
+                            "name": "columns_animation",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_627a8301b8706"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -1415,6 +1457,31 @@
                             "placeholder": ""
                         },
                         {
+                            "key": "field_627a912666bc3",
+                            "label": "Teaser Content",
+                            "name": "teaser_content",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "excerpt": "Excerpt",
+                                "subheading": "Subheading"
+                            },
+                            "default_value": "excerpt",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_627188301af8e",
                             "label": "Read More Text",
                             "name": "read_more_text",
@@ -1438,7 +1505,7 @@
                             "label": "Max Posts",
                             "name": "max_posts",
                             "type": "number",
-                            "instructions": "-1 to show all",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1459,7 +1526,7 @@
                             "label": "Show Pagination",
                             "name": "show_pagination",
                             "type": "select",
-                            "instructions": "Option to load more posts through ajax",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -1478,27 +1545,6 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
-                        },
-                        {
-                            "key": "field_6271789730805",
-                            "label": "Load More Count",
-                            "name": "load_more_count",
-                            "type": "number",
-                            "instructions": "How many posts to query when loading more",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": 6,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "min": 1,
-                            "max": "",
-                            "step": ""
                         },
                         {
                             "key": "field_627188621af8f",
@@ -1555,6 +1601,27 @@
                             },
                             "clone": [
                                 "group_626ade57e9efe"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_627a83abe3563",
+                            "label": "Columns Animation",
+                            "name": "columns_animation",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_627a8301b8706"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -1781,5 +1848,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652121558
+    "modified": 1652212536
 }

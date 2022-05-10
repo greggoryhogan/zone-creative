@@ -108,3 +108,221 @@ function space_shortcode($atts) {
     ), $atts );
     return '<span class="zone-spacer '.$atts['display'].'" style="height:'.$atts['height'].'"></span>';
 }
+
+function get_post_list_content($post_id,$post_type,$taxonomy,$display,$read_more_text,$teaser_content,$column_1_animation,$column_2_animation,$column_animation_anchor_placement,$column_animation_easing,$column_animation_easinganimation_speed,$query_type) {
+    $heading = get_the_title($post_id);
+    if($teaser_content == 'subheading') {
+        $content = get_field('subheading');
+    } else {
+        $content = get_the_excerpt(); 
+    }
+    $link = get_the_permalink();
+    
+    $categories = get_the_terms($post_id,$taxonomy);
+    $category_string = '';
+    if(is_array($categories)) {
+        foreach($categories as $category) {
+            if($category->name != 'Featured') {
+                $category_string .= $category->name.', ';
+            }
+        }
+        $category_string = substr($category_string,0,strlen($category_string) - 2);
+    }
+    $return = '';
+    switch ($display) {
+        case 'list':
+            $return .= '<div class="feature-row">';
+                if($heading != '') {
+                    $return .= '<div class="feature-heading';
+                    if($column_1_animation != 'none') {
+                        $return .= ' has-aos" data-aos="'.$column_1_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                    }else {
+                        $return .= '"';
+                    }
+                    $return .= '>';
+                        $return .= '<a href="'.esc_url( $link ).'" title="View '.$heading.'" class="block-link">';
+                            $return .= '<h3>'.zone_content_filters($heading).'</h3>';
+                        $return .= '</a>';
+                        if($category_string != '') {
+                            $return .= '<div class="categories">'.$category_string.'</div>';
+                        }
+                    $return .= '</div>';
+                }
+                if($content != '' || $link != '') {
+                    $return .= '<div class="feature-content has-link';
+                    if($column_2_animation != 'none') {
+                        $return .= ' has-aos" data-aos="'.$column_2_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                    } else {
+                        $return .= '"';
+                    }
+                    $return .= '>';
+                        if($content != '') {
+                            $return .= zone_content_filters($content);
+                        } else {
+                            $return .= '<p></p>';
+                        }
+                        $return .= '<div class="link">';
+                            $return .= '<a class="btn" href="'.esc_url( $link ).'" title="View '.$heading.'">'.$read_more_text.'</a>';
+                        $return .= '</div>';
+                    $return .= '</div>';
+                }
+            $return .= '</div>';
+            break;
+        case 'grid':
+            $return .= '<div class="grid-item">';
+                $return .= '<a class="grid-link" href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
+                $return .= '<div class="grid-image" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-grid').');"></div>';
+                $return .= '<div class="grid-hover"></div>';
+                $return .= '<div class="grid-content">';
+                    if($heading != '') {
+                        $return .= '<div class="grid-heading">';
+                            $return .= '<h3>'.zone_content_filters($heading).'</h3>';
+                        $return .= '</div>';
+                    }
+                    $return .= '<div class="read-more">'.$read_more_text.'</a></div>';
+                $return .= '</div>';
+            $return .= '</div>';
+            break;
+        case 'content-w-image':
+            $return .= '<div class="flexible-content eyebrow">';
+                if($post_type == 'post') {
+                    if($query_type == 'featured') {
+                        $text_left = 'Featured Article';
+                    } else {
+                        $text_left = 'All Articles';
+                    }
+                } else if($post_type == 'page') {
+                    if($query_type == 'featured') {
+                        $text_left = 'Featured Page';
+                    } else {
+                        $text_left = 'All Pages';
+                    }
+                } else {
+                    $text_left = '';
+                    $industries = get_the_terms( $post_id, 'industries' );
+                    if(is_array($industries)) {
+                        foreach($industries as $industry) {
+                            $text_left .= $industry->name.', ';
+                        }
+                        $text_left = substr($text_left, 0, -2);
+                    }
+                } 
+            
+                if($text_left != '') {
+                    $return .= '<div class="text-left">'.zone_content_filters($text_left).'</div>';
+                }
+                if($category_string != '') {
+                    $return .= '<div class="text-right">'.zone_content_filters($category_string).'</div>';
+                } 
+            $return .= '</div>';
+
+            $return .= '<div class="feature-row no-bottom-border">';
+            if($heading != '') {
+                $return .= '<div class="feature-heading';
+                if($column_1_animation != 'none') {
+                    $return .= ' has-aos" data-aos="'.$column_1_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                } else {
+                    $return .= '"';
+                }
+                $return .= '>';
+                    $return .= '<h3 class="font-bigger">';
+                        $return .= '<a href="'.esc_url( $link ).'" title="View '.$heading.'">';
+                            $return .= zone_content_filters($heading);
+                        $return .= '</a>';
+                    $return .= '</h3>';
+                    if($content != '') {
+                        $return .= '<div class="categories">'.zone_content_filters($content).'</div>';
+                    }
+                    $return .= '<div class="link">';
+                        $return .= '<a class="btn" href="'.esc_url( $link ).'" title="View '.$heading.'">'.$read_more_text.'</a>';
+                    $return .= '</div>';
+                $return .= '</div>';
+            }
+            if(has_post_thumbnail()) {
+                $return .= '<div class="feature-image';
+                if($column_2_animation != 'none') {
+                    $return .= ' has-aos" data-aos="'.$column_2_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
+                } else {
+                    $return .= '"';
+                }
+                $return .= '>';
+                    $return .= '<a href="'.esc_url( $link ).'" title="View '.$heading.'"></a>';
+                    $return .= '<div class="image-container" style="background-image:url('.get_the_post_thumbnail_url($post_id,'zone-hero').');"></div>';
+                $return .= '</div>';
+            }
+        $return .= '</div>';
+            break;
+    }
+    return $return;
+}
+
+function load_zone_posts() {
+    $page = sanitize_text_field( $_POST['page']) + 1;
+    $post_type = sanitize_text_field( $_POST['data']['postType']);
+    $load_more_count = sanitize_text_field( $_POST['data']['loadMoreCount']);
+    $max_pages = sanitize_text_field( $_POST['data']['maxPages']);
+    $taxonomy = sanitize_text_field( $_POST['data']['taxonomy']);
+    $max_posts = sanitize_text_field( $_POST['data']['maxPosts']);
+    $query_type = sanitize_text_field( urldecode($_POST['data']['queryType']));
+    $display = sanitize_text_field($_POST['data']['display']);
+    $read_more_text = sanitize_text_field($_POST['data']['readMore']);
+    $teaser_content = sanitize_text_field($_POST['data']['teaserContent']);
+    $column_1_animation =sanitize_text_field($_POST['data']['col1Animation']);
+    $column_2_animation = sanitize_text_field($_POST['data']['col2Animation']);
+    $column_animation_anchor_placement = sanitize_text_field($_POST['data']['columnAnimationAnchorPlacement']);
+    $column_animation_easing = sanitize_text_field($_POST['data']['columnAnimationEasing']);
+    $column_animation_easinganimation_speed = sanitize_text_field($_POST['data']['columnAnimationEasinganimationSpeed']);
+    switch ($query_type) {
+        case 'all':
+            $tax_query = array();
+            break;
+        case 'featured';
+            $tax_query = array(
+                array(
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => array( 'featured' ),
+                    'operator' => 'IN',
+                ),
+            );
+            break;
+        case 'exclude-featured':
+            $tax_query = array(
+                array(
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => array( 'featured' ),
+                    'operator' => 'NOT IN',
+                ),
+            );
+            break;
+        default: 
+    
+    }
+    $args = array(
+        'post_type' => $post_type,
+        'tax_query' => $tax_query,
+        'posts_per_page' => $max_posts,
+        'paged' => $page
+    );
+    
+    $return = '';
+    $post_query = new WP_Query( $args );
+    if ( $post_query->have_posts() ) : 
+        while( $post_query->have_posts() ) : $post_query->the_post();
+            $post_id = get_the_ID();
+            $return .= get_post_list_content($post_id,$post_type,$taxonomy,$display,$read_more_text,$teaser_content,$column_1_animation,$column_2_animation,$column_animation_anchor_placement,$column_animation_easing,$column_animation_easinganimation_speed,$query_type);
+        endwhile;
+    else:
+
+    endif;
+    $loadmore = 1;
+    if($post_query->max_num_pages == $page) {
+        $loadmore = 0;
+    }
+    wp_reset_query();
+    echo json_encode(array('status' => 'success','data' => $return, 'page' => $page, 'loadmore' => $loadmore));
+    wp_die();
+}
+add_action( 'wp_ajax_load_zone_posts', 'load_zone_posts' );    // If called from admin panel
+add_action( 'wp_ajax_nopriv_load_zone_posts', 'load_zone_posts' ); 

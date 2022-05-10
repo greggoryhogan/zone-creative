@@ -22,6 +22,7 @@ if ( have_posts() ) {
 						echo '>';
 							echo '<div class="container">';
 								echo '<div class="container-content">';
+									//include(ZONE_THEME_DIR.'/template-parts/flexible-content/' . get_row_layout().'.php' );
 									get_template_part( 'template-parts/flexible-content/' . get_row_layout() ); // Template part name MUST match layout ID.						
 								echo '</div>';
 							echo '</div>';

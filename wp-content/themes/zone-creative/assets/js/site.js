@@ -50,5 +50,75 @@
                 $( this ).parent().parent().parent().find('.feature-image').removeClass('is-hovered');
             }
         );
+        //load more posts via ajax in Posts module
+        var loading = false;
+        $(document).on('click','.btn.load-more',function() {
+            let $this = $(this);
+            if(!loading) {
+              loading = true;
+              let default_text = $this.attr('data-default-text');
+              let containerID = $this.attr('data-container-ID');
+              let dataArray = $this.data();
+              let page = $('#posts-'+containerID).attr('data-page');
+              let url = $('#posts-'+containerID).attr('data-url');
+              $this.text('Loading');
+              $.ajax({
+                  url: theme_js.ajax_url,
+                  type: 'post',
+                  data: {
+                    action: 'load_zone_posts',
+                    data: dataArray,
+                    page : page
+                  },
+                  success: function( data ) {
+                    let response = JSON.parse(data);
+                    if(response.status == 'success') {
+                      $('#posts-'+containerID).append(response.data);
+                      setTimeout(function() {
+                          $('.has-aos').each(function(){
+                              $(this).addClass('aos-animate');
+                          });
+                      }, 100);
+                      loading = false;
+                      $this.text(default_text);
+                      $('#posts-'+containerID).attr('data-page',response.page);
+                      history.pushState(null, "", url+'?pg='+response.page);
+                      popPosts();
+                      if(response.loadmore == 0) {
+                          $this.hide();
+                      }
+                    }
+                  }
+              });
+            }
+        });
+
+        //function to load posts after 'load more' button has been pressed
+        var popped = false;
+        function popPosts() {
+          if($('.posts.show-pagination').length) {
+            if(!popped) {
+              let queryString = window.location.search;
+              let urlParams = new URLSearchParams(queryString);
+              if(urlParams.has('pg')) {
+                let page = parseInt(urlParams.get('pg'));
+                $('.post.show-pagination').attr('data-page',page);
+                setInterval(function() {
+                  if ( !loading && page > 1) {
+                      page = page - 1;
+                      $('.btn.load-more').trigger('click');
+                  }
+                }, 100);
+              }
+              popped = true;
+            }
+          }
+        }
+        //trigger post loading on page load
+        popPosts();
+        //trigger post loading on page pop
+        $(window).on("popstate", function() {
+          popPosts();
+        });
     });
 })(jQuery); // Fully reference jQuery after this point.
