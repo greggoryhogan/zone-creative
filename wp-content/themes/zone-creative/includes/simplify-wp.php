@@ -176,6 +176,12 @@ function remove_zone_trackbacks_pingbacks() {
     //remove_meta_box( 'slugdiv', 'post', 'normal' );
     //remove_meta_box( 'slugdiv', 'page', 'normal' );
     //remove_meta_box( 'slugdiv', 'work', 'normal' );
+    remove_meta_box( 'commentstatusdiv', 'post', 'normal' );
+    remove_meta_box( 'commentstatusdiv', 'page', 'normal' );
+    remove_meta_box( 'commentstatusdiv', 'work', 'normal' );
+    remove_meta_box( 'commentsdiv', 'post', 'normal' );
+    remove_meta_box( 'commentsdiv', 'page', 'normal' );
+    remove_meta_box( 'commentsdiv', 'work', 'normal' );
 }
 add_action('add_meta_boxes', 'remove_zone_trackbacks_pingbacks');
 
