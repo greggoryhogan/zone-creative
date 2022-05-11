@@ -26,6 +26,7 @@ switch ($post_type) {
         break;
     default: 
         $taxonomy = 'category';
+        break;
 }
 switch ($query_type) {
     case 'all':
@@ -74,7 +75,7 @@ echo '<div class="flexible-content posts '.$wrapper_class.' '.$show_pagination.'
     $post_query = new WP_Query( $args );
     if ( $post_query->have_posts() ) : 
         while( $post_query->have_posts() ) : $post_query->the_post();
-            echo get_post_list_content(get_the_ID(),$post_type,$taxonomy,$display,$read_more_text,$teaser_content,$column_1_animation,$column_2_animation,$column_animation_anchor_placement,$column_animation_easing,$column_animation_easinganimation_speed,$query_type);
+            include( ZONE_THEME_DIR . '/template-parts/flexible-content/snippets/posts.php' );
         endwhile;
     else:
         echo '<p>Sorry, there are no '.$post_type.'s to show.</p>';
@@ -82,6 +83,7 @@ echo '<div class="flexible-content posts '.$wrapper_class.' '.$show_pagination.'
     wp_reset_query();
 echo '</div>';
 
+//Load posts if necessary
 if($post_query->max_num_pages > 1 && $show_pagination == 'show-pagination') {
     echo '<div class="flexible-content posts">';
         echo '<div class="text-center load-more-container">';

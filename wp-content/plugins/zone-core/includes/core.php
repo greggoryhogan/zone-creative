@@ -105,7 +105,7 @@ function register_zone_cpts_and_taxonomies() {
 
 	$labels = array(
 		'name' => __( 'Services', 'zone' ),
-		'singular_name' => __( 'Service', 'zone' ),
+		'singular_name' => __( 'Services', 'zone' ),
         'add_new_item' => __( 'Add New Service', 'zone' ),
         'parent_item' => __( 'Parent Service', 'zone' ),
         'not_found' => __( 'No Services found', 'zone' ),

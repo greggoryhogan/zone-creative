@@ -82,7 +82,8 @@
                       loading = false;
                       $this.text(default_text);
                       $('#posts-'+containerID).attr('data-page',response.page);
-                      history.pushState(null, "", url+'?pg='+response.page);
+                      //history.pushState(null, "", url+'?pg='+response.page);
+                      window.history.replaceState(null, null, '?pg='+response.page);
                       popPosts();
                       if(response.loadmore == 0) {
                           $this.hide();

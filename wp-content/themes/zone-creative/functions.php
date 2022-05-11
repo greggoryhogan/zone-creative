@@ -10,6 +10,7 @@ define( 'ZONE_THEME_URI', get_template_directory_uri() );
 require_once( ZONE_THEME_DIR . '/includes/theme.php' ); //Theme alterations like nav menus
 require_once( ZONE_THEME_DIR . '/includes/simplify-wp.php' ); //Clean up WP
 require_once( ZONE_THEME_DIR . '/includes/acf.php' ); //ACF Specific
+require_once( ZONE_THEME_DIR . '/includes/ajax.php' ); //Ajax functions
 
 /* 
  * Load Style/Scripts
