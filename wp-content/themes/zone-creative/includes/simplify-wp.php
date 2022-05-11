@@ -173,9 +173,9 @@ function remove_zone_trackbacks_pingbacks() {
     //remove trackbacks
     remove_meta_box('trackbacksdiv', 'post', 'normal');
     //remove slug metabox
-    remove_meta_box( 'slugdiv', 'post', 'normal' );
-    remove_meta_box( 'slugdiv', 'page', 'normal' );
-    remove_meta_box( 'slugdiv', 'work', 'normal' );
+    //remove_meta_box( 'slugdiv', 'post', 'normal' );
+    //remove_meta_box( 'slugdiv', 'page', 'normal' );
+    //remove_meta_box( 'slugdiv', 'work', 'normal' );
 }
 add_action('add_meta_boxes', 'remove_zone_trackbacks_pingbacks');
 
