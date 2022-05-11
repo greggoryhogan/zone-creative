@@ -409,7 +409,28 @@ a:hover {
         .container-content {
             width: 100%;
         }
-        
+        @media all and (min-width: $mobile) {
+            .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
+                width: 25%;
+                font-size: 1.2rem;
+                color: $traditional-gray;
+            }
+            .gform_wrapper.gravity-theme .left_label div.gfield > div:not(.ui-resizable-handle):not(.gfield-admin-icons), .gform_wrapper.gravity-theme .right_label div.gfield > div:not(.ui-resizable-handle):not(.gfield-admin-icons) {
+                width: 75%;
+            }
+            .gform_wrapper.gravity-theme .gform_footer.left_label, .gform_wrapper.gravity-theme .gform_footer.right_label, .gform_wrapper.gravity-theme .gform_page_footer.left_label, .gform_wrapper.gravity-theme .gform_page_footer.right_label {
+                padding-left: 25%;
+            }
+        }
+        @media all and (max-width: $mobile) {
+            .gform_wrapper.gravity-theme .left_label .gfield:not(.gsection):not(.gfield_html):not(fieldset), .gform_wrapper.gravity-theme .right_label .gfield:not(.gsection):not(.gfield_html):not(fieldset) {
+                display: block;
+            }
+            .gform_wrapper.gravity-theme .left_label div.gfield > div:not(.ui-resizable-handle):not(.gfield-admin-icons), .gform_wrapper.gravity-theme .right_label div.gfield > div:not(.ui-resizable-handle):not(.gfield-admin-icons) {
+                width: 100%;
+                margin-top: $gutter-sm;
+            }
+        }
     }
     .footer {
         min-height: 5rem;

@@ -73,3 +73,55 @@ input[type="checkbox"]:focus, input[type="color"]:focus, input[type="date"]:focu
     box-shadow: none;
     outline: 2px solid transparent;
 }
+/**acf gallery layout**/
+div[data-name="gallery"] .acf-table {
+    display: block;
+}
+div[data-name="gallery"] .acf-table thead {
+    display: none;
+}
+div[data-name="gallery"] .acf-table tbody {
+    display: grid;
+grid-template-columns: 25% 25% 25% 25%;
+width: 100%;
+}
+div[data-name="gallery"] .acf-table tbody tr {
+    display: flex;
+    flex-direction: column;
+}
+div[data-name="gallery"] .acf-table tbody tr td {
+    width: 100%!important;
+    border-left: none;
+    border-top: none;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+div[data-name="gallery"] .acf-table tbody tr:nth-of-type(n+5) td:last-child {
+    border-bottom: none;
+}
+div[data-name="gallery"] .acf-table tbody tr:nth-of-type(4n) td {
+    border-right: none;
+}
+div[data-name="gallery"] .acf-table tbody tr td.acf-row-handle {
+    display: flex;
+    box-sizing: border-box;
+}
+div[data-name="gallery"] .acf-table tbody tr td.acf-row-handle a {
+    display: block!important;
+    position: relative;
+    top: 0 !important;
+    margin: 0 10px 0 0;
+}
+div[data-name="gallery"] .acf-table tbody tr td.acf-field-image {
+    flex: 1;
+}
+div[data-name="gallery"] .acf-table tbody tr td.acf-field-image .image-wrap,
+div[data-name="gallery"] .acf-table tbody tr td.acf-field-image .image-wrap img {
+    width: 100%!important;
+    height: auto!important;
+    max-height: 100%!important;
+    max-width: 100%!important;
+}
+div[data-name="gallery"] .acf-table tbody tr td.acf-field-image .acf-button {
+    margin-top: 10px;
+}

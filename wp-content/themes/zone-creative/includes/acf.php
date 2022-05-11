@@ -62,6 +62,16 @@ function zone_acf_header_css() {
 				$desktop_padding .= '#zone-content-band-'.$band.'{padding:'.get_sub_field('desktop_padding').';}';
 				$tablet_padding .= '#zone-content-band-'.$band.'{padding:'.get_sub_field('tablet_padding').';}';
 				$mobile_padding .= '#zone-content-band-'.$band.'{padding:'.get_sub_field('mobile_padding').';}';
+				if(get_row_layout() == 'wysiwyg') {
+					$desktop_padding .= '#zone-content-band-'.$band.' .wysiwyg-content{max-width:'.get_sub_field('desktop_width').'%;}';
+					$tablet_padding .= '#zone-content-band-'.$band.' .wysiwyg-content{max-width:'.get_sub_field('tablet_width').'%;}';
+				}
+				if(get_row_layout() == 'two_column_content') {
+					if(get_sub_field('limit_text_width') == 'yes') {
+						$desktop_padding .= '#zone-content-band-'.$band.' .contain-content{max-width:'.get_sub_field('desktop_width').'%;}';
+						$tablet_padding .= '#zone-content-band-'.$band.' .contain-content{max-width:'.get_sub_field('tablet_width').'%;}';
+					}
+				}
 			endwhile;
 			wp_reset_postdata();
 			?>

@@ -12,6 +12,7 @@ function load_zone_posts() {
     $post_type = sanitize_text_field( $_POST['data']['postType']);
     $load_more_count = sanitize_text_field( $_POST['data']['loadMoreCount']);
     $max_pages = sanitize_text_field( $_POST['data']['maxPages']);
+    $category = sanitize_text_field( $_POST['data']['category']);
     $taxonomy = sanitize_text_field( $_POST['data']['taxonomy']);
     $max_posts = sanitize_text_field( $_POST['data']['maxPosts']);
     $query_type = sanitize_text_field( urldecode($_POST['data']['queryType']));
@@ -44,6 +45,16 @@ function load_zone_posts() {
                     'field'    => 'slug',
                     'terms'    => array( 'featured' ),
                     'operator' => 'NOT IN',
+                ),
+            );
+            break;
+        case 'category':
+            $tax_query = array(
+                array(
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => array( $category ),
+                    'operator' => 'IN',
                 ),
             );
             break;

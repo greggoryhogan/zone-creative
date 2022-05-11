@@ -33,10 +33,10 @@ echo '<div class="flexible-content post-details">';
                     if(is_array($categories)) {
                         foreach($categories as $category) {
                             if($category->name != 'Featured') {
-                                $category_string .= $category->name.', ';
+                                $category_string .= $category->name.'<br>';
                             }
                         }
-                        $category_string = substr($category_string,0,strlen($category_string) - 2);
+                        $category_string = substr($category_string,0,strlen($category_string) - 4);
                     }
                     echo '<p>'.$category_string.'</p>';
                 echo '</div>';

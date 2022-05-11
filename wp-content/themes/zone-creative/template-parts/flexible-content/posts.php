@@ -1,6 +1,7 @@
 <?php 
 $post_type = get_sub_field('post_type'); //post page or work
 $query_type = get_sub_field('query_type'); //all, featured or exclude-featured
+$category_slug = get_sub_field('category_slug');
 $display = get_sub_field('display'); //list grid or content-w-image
 $max_posts = get_sub_field('max_posts'); //default 3
 $show_pagination = get_sub_field('show_pagination'); //true/false
@@ -52,6 +53,16 @@ switch ($query_type) {
             ),
         );
         break;
+    case 'category':
+        $tax_query = array(
+            array(
+                'taxonomy' => $taxonomy,
+                'field'    => 'slug',
+                'terms'    => array( $category_slug ),
+                'operator' => 'IN',
+            ),
+        );
+        break;
     default: 
 
 }
@@ -91,7 +102,8 @@ if($post_query->max_num_pages > 1 && $show_pagination == 'show-pagination') {
             class="btn load-more"  
             data-container-ID="'.$container_id.'" 
             data-default-text="'.$load_more_text.'"
-            data-taxonomy="'.$taxonomy.'"
+            data-taxonomy="'.$taxonomy.'" 
+            data-category="'.$category_slug.'"
             data-query-type="'.$query_type.'"   
             data-display="'.$display.'" 
             data-read-more="'.$read_more_text.'" 

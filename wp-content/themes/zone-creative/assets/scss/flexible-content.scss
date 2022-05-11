@@ -56,7 +56,17 @@
             line-height: .9rem;
         }
     }
-    .btn {
+    h6 {
+        font-size: .8rem;
+        line-height: .8rem;
+        margin: .8rem 0;
+        @media all and (max-width: $mobile) { 
+            font-size: .75rem;
+            line-height: .75rem;
+        }
+    }
+    .btn,
+    .button {
         display: inline-block;
         color: $black;
         background:$white;
@@ -68,6 +78,7 @@
         text-decoration: none;
         transition: .2s border-color;
         margin-top: $gutter-sm;
+        cursor: pointer;
         &:hover,
         &:active,
         &:focus {
@@ -565,6 +576,110 @@
             }
             p {
                 margin-top: .5 * $gutter-sm;
+            }
+        }
+    }
+    &.gallery {
+        @media all and (min-width: $mobile) {
+            display: grid;
+            gap: $gutter;
+            
+            &.one {
+                grid-template-columns: auto;
+            }   
+            &.two {
+                grid-template-columns: auto auto;
+            }
+            &.three {
+                grid-template-columns: auto auto auto;
+            }
+            &.four {
+                grid-template-columns: auto auto auto auto;
+            }
+        }
+        &.full-width {
+            img {
+                width: 100%;
+            }
+        }
+        &.use-zoom {
+            .image-item {
+                overflow: hidden;
+                &:hover,
+                &:focus,
+                &:active {
+                    img {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+        .image-item {
+            position: relative;
+            @media all and (max-width: $mobile) {
+                margin-bottom: $gutter;
+            }    
+            .image-container {
+                display: block;
+                position: relative;
+                .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: $black;
+                    opacity: 0;
+                    transition: .2s opacity;
+                }
+                &:hover,
+                &:focus,
+                &:active {
+                    .overlay {
+                        opacity: .7;
+                    }
+                }
+                .responsive-video {
+                    width: 100%;
+                    height: 0;
+                    position: relative;
+                    iframe {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border: none;
+                    }
+                }
+            }
+            img {
+                display: block;
+                transform: scale(1);
+                transition: .2s transform;
+            }
+            a {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    &.wysiwyg {
+        text-align: inherit;
+        p {
+            color: $dark-gray;
+        }
+        &.align-center {
+            .wysiwyg-content {
+                margin: 0 auto;
+            }
+        }
+        @media all and (max-width:$mobile) {
+            .wysiwyg-content {
+                max-width: 100%!important;
             }
         }
     }

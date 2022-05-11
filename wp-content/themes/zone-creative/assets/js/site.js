@@ -60,7 +60,6 @@
               let containerID = $this.attr('data-container-ID');
               let dataArray = $this.data();
               let page = $('#posts-'+containerID).attr('data-page');
-              let url = $('#posts-'+containerID).attr('data-url');
               $this.text('Loading');
               $.ajax({
                   url: theme_js.ajax_url,
@@ -120,6 +119,19 @@
         //trigger post loading on page pop
         $(window).on("popstate", function() {
           popPosts();
+        });
+
+        //play videos on hover
+        var nowPlaying = 'none';
+        $('.responsive-video').hover(function(){
+            nowPlaying = $(this).find('iframe').attr('src');
+            let autoplay = '?autoplay=1&mute=1';
+            if (nowPlaying.indexOf('?') >= 0) {
+              autoplay = '&autoplay=1&mute=1';
+            } 
+            $(this).find('iframe').attr('src',nowPlaying+autoplay);
+        }, function(){
+            $(this).find('iframe').attr('src',nowPlaying);
         });
     });
 })(jQuery); // Fully reference jQuery after this point.

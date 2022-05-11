@@ -23,10 +23,7 @@ $column_animation_easinganimation_speed = get_sub_field('column_animation_easing
 ?>
 <div class="flexible-content two-column-content <?php echo $row_order; ?> <?php echo $vertical_align; ?>"><?php
     if($link || $heading != '' || $content != '' || $image) {
-        echo '<div';
-        if(get_sub_field('limit_text_width') == 'yes') {
-            echo ' class="contain-content" style="max-width:'.get_sub_field('content_container_width').'%;"';
-        } 
+        echo '<div class="contain-content"';
         if($column_1_animation != 'none') {
             echo ' data-aos="'.$column_1_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
         }
@@ -59,12 +56,7 @@ $column_animation_easinganimation_speed = get_sub_field('column_animation_easing
         echo '</div>';  
     }
     if($link2 || $heading2 != '' || $content2 != '' || $image2) {
-        echo '<div class="right';
-        if(get_sub_field('limit_text_width') == 'yes') {
-            echo ' contain-content" style="max-width:'.get_sub_field('content_container_width').'%;"';
-        } else {
-            echo '"';
-        }
+        echo '<div class="right contain-content"';
         if($column_2_animation != 'none') {
             echo ' data-aos="'.$column_2_animation.'" data-aos-easing="'.$column_animation_easing.'" data-aos-anchor-placement="'.$column_animation_anchor_placement.'" data-aos-duration="'.$column_animation_easinganimation_speed.'"';
         }
