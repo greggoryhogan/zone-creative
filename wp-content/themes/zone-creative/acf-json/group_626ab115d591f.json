@@ -661,7 +661,8 @@
                                 "medium": "Medium",
                                 "large": "Large",
                                 "zone-hero": "Hero",
-                                "zone-grid": "Square"
+                                "zone-grid": "Square",
+                                "zone-portfolio": "Portfolio"
                             },
                             "default_value": "hero",
                             "allow_null": 0,
@@ -1056,7 +1057,8 @@
                                 "medium": "Medium",
                                 "large": "Large",
                                 "zone-hero": "Hero",
-                                "zone-grid": "Square"
+                                "zone-grid": "Square",
+                                "zone-portfolio": "Portfolio"
                             },
                             "default_value": "zone-hero",
                             "allow_null": 0,
@@ -1419,7 +1421,8 @@
                                 "medium": "Medium",
                                 "large": "Large",
                                 "zone-hero": "Hero",
-                                "zone-grid": "Square"
+                                "zone-grid": "Square",
+                                "zone-portfolio": "Portfolio"
                             },
                             "default_value": "square",
                             "allow_null": 0,
@@ -2567,5 +2570,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652293422
+    "modified": 1652293563
 }
