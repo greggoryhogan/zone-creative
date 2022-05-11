@@ -6,45 +6,52 @@
 					<img src="<?php echo ZONE_THEME_URI; ?>/assets/img/zone-logo-white.png" alt="Zone logo" />
 				</a>
 			</div>
-			<?php if ( has_nav_menu( 'footer' ) ) : ?>
-				<nav aria-label="<?php esc_attr_e( 'Secondary menu', 'twentytwentyone' ); ?>" class="footer-navigation">
-					<ul class="footer-navigation-wrapper">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'footer',
-								'items_wrap'     => '%3$s',
-								'container'      => false,
-								'depth'          => 1,
-								'link_before'    => '<span>',
-								'link_after'     => '</span>',
-								'fallback_cb'    => false,
-							)
-						);
-						?>
-					</ul><!-- .footer-navigation-wrapper -->
-				</nav><!-- .footer-navigation -->
-			<?php endif; ?>
-			<div class="site-info">
-				<div class="site-name">
-					&copy; <?php echo date('Y'); ?>
-					<?php if ( get_bloginfo( 'name' ) && get_theme_mod( 'display_title_and_tagline', true ) ) : ?>
-						<?php if ( is_front_page() && ! is_paged() ) : ?>
-							<?php bloginfo( 'name' ); ?>
-						<?php else : ?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						<?php endif; ?>
-					<?php endif; ?>
-					
-				</div><!-- .site-name -->
+			<div class="footer-right">
+				<?php if ( has_nav_menu( 'footer' ) ) : ?>
+					<nav aria-label="<?php esc_attr_e( 'Secondary menu', 'twentytwentyone' ); ?>" class="footer-navigation">
+						<ul class="footer-navigation-wrapper">
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'footer',
+									'items_wrap'     => '%3$s',
+									'container'      => false,
+									'depth'          => 1,
+									'link_before'    => '<span>',
+									'link_after'     => '</span>',
+									'fallback_cb'    => false,
+								)
+							);
+							?>
+						</ul>
+					</nav>
+				<?php endif; ?>
+				<div class="site-info">
+					<div class="site-name">
+						<?php 
+						echo '&copy; '.date('Y');
+						if(function_exists('get_field')) {
+							echo ' '.get_field('copyright_info','options');
+						} ?>
+					</div>
+					<div class="social">
+						<?php if(function_exists('get_field')) {
+							$behance = get_field('behance_url','options');
+							$linkedin = get_field('linkedin_url','options');
+							if($behance != '') {
+								echo '<a href="'.$behance.'" target="_blank" title="Visit us on Behance" class="behance">Visit us on Behance</a>';
+							}
+							if($linkedin != '') {
+								echo '<a href="'.$linkedin.'" target="_blank" title="Find us on Linkedin" class="linkedin">Find us on Linkedine</a>';
+							}
+						} ?>
+					</div>
+				</div>
 			</div>
 
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-
-</div><!-- #page -->
-
+		</div>
+	</footer>
+</div>
 <?php wp_footer(); ?>
-
 </body>
 </html>

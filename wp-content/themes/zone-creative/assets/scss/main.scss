@@ -48,6 +48,7 @@ a:hover {
     margin: 0 auto;
     z-index: 1;
     font-family: 'Libre Franklin', sans-serif;
+    overflow: hidden;
     h1,
     .font-biggest {
         font-family: "NHaasGroteskTXPro-75Bd",Arial, Helvetica, sans-serif;
@@ -322,6 +323,13 @@ a:hover {
                     }
                 }
             }
+            .social {
+                position: fixed;
+                bottom: $gutter-sm;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
         }
         .primary-navigation {
             /*width: 35%;*/
@@ -362,6 +370,7 @@ a:hover {
                 top: $gutter-sm * 4;
                 width: 100%;
                 height: 100vh;
+                padding: 0;
                 opacity: 0;
                 z-index: -1;
                 transition: .5s opacity;
@@ -371,9 +380,10 @@ a:hover {
                 }
                 .header-menu {
                     a {
-                        padding: 3 * $gutter-sm $gutter-sm;
+                        padding: $gutter + (.5 * $gutter-sm) $gutter-sm;
                         display: block;
                         border-bottom: 1px solid $gray;
+                        font-size: 1rem;
                     }
                 }
             }
@@ -437,6 +447,13 @@ a:hover {
         padding: 4rem 0;
         background: $black;
         color: $white;
+        .container {
+            align-items: flex-start;
+            @media all and (max-width: $mobile) {
+                display: block;
+                text-align: center;
+            }
+        }
         a {
             color:  $white;
             &:hover,
@@ -446,38 +463,112 @@ a:hover {
             }
         }
         .zone-logo {
+            flex: 1;
             img {
                 width: 234px;
             }
         }
-    }
-}
-.zone-maintenance-mode {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: $black;
-    background: $white;
-    display: flex;
-    flex-direction: column;
-    z-index: 99;
-    font-family: "NHaasGroteskTXPro-65Md",Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    padding-top: 3 * $gutter;
-    align-items: center;
-    .container {
-        text-align: center;
-        form {
-            text-align: left;
-            margin-top: $gutter;
+        .footer-right {
+            flex: 1;
+            @media all and (min-width: $mobile) {
+                width: 50%;
+            }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    margin-bottom: $gutter;
+                    font-weight: 500;
+                }
+                @media all and (min-width:$mobile) {
+                    columns: 2;
+                }
+                @media all and (max-width: $mobile) {
+                    margin: $gutter + $gutter-sm 0 2 * $gutter 0;
+                }
+            }
+            .site-info {
+                margin-top: $gutter;
+                @media all and (min-width: $tablet) {
+                    columns: 2;
+                }
+                @media all and (max-width: $tablet) {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    .site-name {
+                        margin-top: $gutter;
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
     }
-    img {
-        width: 90%;
-        max-width: 300px;
-        margin-bottom: $gutter;
+    .social {
+        a {
+            display: inline-block!important;
+            border: 2px solid $white;
+            padding: 0!important;
+            width: 2 * $gutter;
+            height: 2 * $gutter;
+            line-height: 2 * $gutter;
+            text-align: center;
+            overflow: hidden;
+            text-indent: -999px;
+            border-radius: 50%;
+            margin-right: $gutter;
+            background-size: $gutter;
+            background-repeat: no-repeat;
+            background-position: center;
+            @media all and (max-width: $mobile) {
+                margin: 0 $gutter-sm;
+            }
+            
+            &.behance {
+                background-image: url('../img/behance.png');
+            }
+            &.linkedin {
+                background-image: url('../img/in.png');
+            }
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: $light-gray;
+            }
+        }
+    }
+}
+.maintenance-mode {
+    .site {
+        display: none;
+    }
+    .zone-maintenance-mode {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: $black;
+        background: $white;
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+        font-family: "NHaasGroteskTXPro-65Md",Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        padding-top: 3 * $gutter;
+        align-items: center;
+        .container {
+            text-align: center;
+            form {
+                text-align: left;
+                margin-top: $gutter;
+            }
+        }
+        img {
+            width: 90%;
+            max-width: 300px;
+            margin-bottom: $gutter;
+        }
     }
 }

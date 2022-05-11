@@ -37,6 +37,20 @@ function add_zone_secondary_items_to_primary($items, $args) {
         foreach($secondary as $second) {
 			$items .= '<li id="menu-item-'.$second->ID.'" class="menu-item mobile-only"><a href="'.$second->url.'">'.$second->title.'</a></li>';
 		}
+        if(function_exists('get_field')) {
+            $behance = get_field('behance_url','options');
+            $linkedin = get_field('linkedin_url','options');
+            if($behance !='' || $linkedin != '') {
+                $items .= '<li class="menu-item mobile-only social">';
+                    if($behance != '') {
+                        $items .= '<a href="'.$behance.'" target="_blank" title="Visit us on Behance" class="behance">Visit us on Behance</a>';
+                    }
+                    if($linkedin != '') {
+                        $items .= '<a href="'.$linkedin.'" target="_blank" title="Find us on Linkedin" class="linkedin">Find us on Linkedine</a>';
+                    }
+                $items .= '</li>';
+            }
+        }
     }
     return $items;
 }
@@ -99,6 +113,22 @@ function zone_maintenance_notice() {
             }
         }
     }
+}
+
+/**
+ * Add maintenance class to body if needed
+ */
+add_filter( 'body_class', 'zone_maintenance_class');
+function zone_maintenance_class( $classes ) {
+    if(get_current_user_id() <= 0) {
+        if(function_exists('get_field')) {
+            $maintenance_notice_active = get_field('maintenance_notice_active','option');
+            if($maintenance_notice_active == 'yes') {
+                $classes[] = 'maintenance-mode';
+            }
+        }
+    }
+    return $classes;
 }
 
 /**
