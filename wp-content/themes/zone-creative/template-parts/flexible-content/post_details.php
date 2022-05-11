@@ -1,5 +1,11 @@
 <?php 
 $post_id = get_the_ID();
+$introduction_shows = get_sub_field('introduction_shows');
+if($introduction_shows == 'subheading') {
+    $intro = get_field('subheading');
+} else {
+    $intro = get_the_excerpt();
+}
 $post_type = get_post_type(); //post page or work
 switch ($post_type) {
     case 'post':
@@ -18,7 +24,7 @@ switch ($post_type) {
 echo '<div class="flexible-content post-details">';
     echo '<div class="description">';
         echo '<div class="description-label">'.get_field('post_details_introduction','options').'</div>';
-        echo '<div class="haas font-smaller post-description-area">'.get_the_excerpt().'</div>'; 
+        echo '<div class="haas font-smaller post-description-area">'.$intro.'</div>'; 
     echo '</div>';
     echo '<div class="details">';
         foreach($taxonomies as $taxonomy) {

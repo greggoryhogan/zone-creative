@@ -2101,23 +2101,6 @@
                             "endpoint": 0
                         },
                         {
-                            "key": "field_627b0568767a5",
-                            "label": "This field has no options",
-                            "name": "",
-                            "type": "message",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "new_lines": "wpautop",
-                            "esc_html": 0
-                        },
-                        {
                             "key": "field_627b04197f7fb",
                             "label": "Style",
                             "name": "style",
@@ -2158,6 +2141,31 @@
                             "layout": "block",
                             "prefix_label": 0,
                             "prefix_name": 0
+                        },
+                        {
+                            "key": "field_627c01cf4706b",
+                            "label": "Introduction Shows",
+                            "name": "introduction_shows",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "excerpt": "Excerpt",
+                                "subheading": "Subheading"
+                            },
+                            "default_value": "excerpt",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -2570,5 +2578,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652293563
+    "modified": 1652294163
 }
