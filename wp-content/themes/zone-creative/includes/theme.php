@@ -29,6 +29,14 @@ function zone_theme_support() {
 add_action( 'after_setup_theme', 'zone_theme_support' );
 
 /**
+ * Favicon
+ */
+function zone_favicon() {
+    echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.ZONE_THEME_URI.'/assets/img/fav.png" />';
+}
+add_action('wp_head', 'zone_favicon');
+
+/**
  * Add Secondary Nav Items to Primary for Mobile View
  */
 function add_zone_secondary_items_to_primary($items, $args) {
