@@ -42,5 +42,11 @@ echo '<div class="flexible-content post-details">';
                 echo '</div>';
             echo '</div>';
         }
+        if($post_type == 'post') {
+            echo '<div class="detail">';
+                echo '<div class="description-label">Date</div>';
+                echo '<div class="post-detail-tag"><p>'.date('F j, Y',get_post_time()).'</p></div>';
+            echo '</div>';
+        }
     echo '</div>';
 echo '</div>';
