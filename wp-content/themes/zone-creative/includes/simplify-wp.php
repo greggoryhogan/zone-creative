@@ -166,6 +166,9 @@ function zone_archive_titles($title) {
     return $title;    
 }
 
+/**
+ * Remove trackbacks meta boxes
+ */
 function remove_zone_trackbacks_pingbacks() {
     //remove trackbacks
     remove_meta_box('trackbacksdiv', 'post', 'normal');
@@ -175,3 +178,38 @@ function remove_zone_trackbacks_pingbacks() {
     remove_meta_box( 'slugdiv', 'work', 'normal' );
 }
 add_action('add_meta_boxes', 'remove_zone_trackbacks_pingbacks');
+
+/**
+ * Remove comments
+ */
+function zone_disable_comments( $open, $post_id ) {
+    return false;
+}
+add_filter( 'comments_open', 'zone_disable_comments', 10 , 2 );
+
+/**
+ * Remove comments from admin menu
+ */
+function zone_remove_admin_menus() {
+    remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'zone_remove_admin_menus' );
+
+/**
+ * Remove comments support
+ */
+function zone_remove_comment_support() {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'page', 'comments' );
+    remove_post_type_support( 'work', 'comments' );
+}
+add_action('init', 'zone_remove_comment_support', 100);
+
+/**
+ * Remove comments from admin bar
+ */
+function zone_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+}
+add_action( 'wp_before_admin_bar_render', 'zone_admin_bar_render' );
