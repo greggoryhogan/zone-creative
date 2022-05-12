@@ -1,5 +1,6 @@
 <?php 
 $post_id = get_the_ID();
+$introduction_label = get_sub_field('introduction_label');
 $introduction_shows = get_sub_field('introduction_shows');
 if($introduction_shows == 'subheading') {
     $intro = get_field('subheading');
@@ -23,7 +24,7 @@ switch ($post_type) {
 }
 echo '<div class="flexible-content post-details">';
     echo '<div class="description">';
-        echo '<div class="description-label">'.get_field('post_details_introduction','options').'</div>';
+        echo '<div class="description-label">'.$introduction_label.'</div>';
         echo '<div class="haas font-smaller post-description-area">'.$intro.'</div>'; 
     echo '</div>';
     echo '<div class="details">';
