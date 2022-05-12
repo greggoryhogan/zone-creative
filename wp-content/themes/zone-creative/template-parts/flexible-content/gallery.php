@@ -4,8 +4,9 @@ $image_size = get_sub_field('image_size');
 $zoom_on_hover = get_sub_field('zoom_on_hover');
 $overlay_on_hover = get_sub_field('overlay_on_hover');
 $force_images_full_width = get_sub_field('force_images_full_width');
+$autoplay_videos_on_hover = get_sub_field('autoplay_videos_on_hover');
 if( have_rows('gallery') ):
-    echo '<div class="flexible-content gallery '.$columns.' '.$zoom_on_hover.' '.$overlay_on_hover.' '.$force_images_full_width.'">';
+    echo '<div class="flexible-content gallery '.$columns.' '.$zoom_on_hover.' '.$overlay_on_hover.' '.$force_images_full_width.' '.$autoplay_videos_on_hover.'">';
     while ( have_rows('gallery') ) : the_row();
         echo '<div class="image-item">';
             echo '<div class="image-container">';
@@ -17,7 +18,15 @@ if( have_rows('gallery') ):
                     $embed_url = get_sub_field('embed_url');
                     $aspect_ratio= get_sub_field('aspect_ratio');
                     echo '<div class="responsive-video" style="padding-bottom: '.$aspect_ratio.'%;">';
-                        echo '<iframe src="'.$embed_url.'"></iframe>';
+                        echo '<iframe src="'.$embed_url.'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;';
+                        if($autoplay_videos_on_hover == 'no-autoplay') {
+                            echo 'picture-in-picture';
+                        }
+                        echo '"';
+                        if($autoplay_videos_on_hover == 'no-autoplay') {
+                            echo ' allowfullscreen';
+                        }
+                        echo '></iframe>';
                     echo '</div>';
                 }
                 $link = get_sub_field('link');    

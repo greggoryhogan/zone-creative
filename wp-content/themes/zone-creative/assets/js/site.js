@@ -138,7 +138,7 @@
 
     //play videos on hover
     var nowPlaying = 'none';
-    $('.responsive-video').hover(function(){
+    $('.autoplay .responsive-video').hover(function(){
         nowPlaying = $(this).find('iframe').attr('src');
         let autoplay = '?autoplay=1&mute=1';
         if (nowPlaying.indexOf('?') >= 0) {

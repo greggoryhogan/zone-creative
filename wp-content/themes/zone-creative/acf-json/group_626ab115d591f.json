@@ -1184,6 +1184,143 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_627d17bab151b": {
+                    "key": "layout_627d17bab151b",
+                    "name": "video",
+                    "label": "Video",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_627d17bab151c",
+                            "label": "Content",
+                            "name": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "top",
+                            "endpoint": 0
+                        },
+                        {
+                            "key": "field_627d17bab151d",
+                            "label": "Embed URL",
+                            "name": "embed_url",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_627d17bab151e",
+                            "label": "Aspect Ratio",
+                            "name": "aspect_ratio",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "56.25": "16:9",
+                                "75": "4:3"
+                            },
+                            "default_value": "56.25",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_627d198d79e1f",
+                            "label": "Autoplay on Hover",
+                            "name": "autoplay_videos_on_hover",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "no-autoplay": "No Autoplay",
+                                "autoplay": "Autoplay"
+                            },
+                            "default_value": "no-autoplay",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_627d17bab1522",
+                            "label": "Style",
+                            "name": "style",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_626c005c78fe0"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_627d17bab1523",
+                            "label": "Animation",
+                            "name": "animation",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_626ade57e9efe"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_627bbab1b5388": {
                     "key": "layout_627bbab1b5388",
                     "name": "gallery",
@@ -1384,7 +1521,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "20",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1411,7 +1548,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "20",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1441,7 +1578,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "20",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1466,7 +1603,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "20",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1491,7 +1628,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "20",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1500,6 +1637,31 @@
                                 "use-overlay": "Use Overlay"
                             },
                             "default_value": "no-overlay",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_627d190a79e1e",
+                            "label": "Autoplay on Hover",
+                            "name": "autoplay_videos_on_hover",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "no-autoplay": "No Autoplay",
+                                "autoplay": "Autoplay"
+                            },
+                            "default_value": "no-autoplay",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -2578,5 +2740,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652294296
+    "modified": 1652365756
 }
