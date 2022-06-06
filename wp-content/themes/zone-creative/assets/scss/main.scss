@@ -433,8 +433,10 @@ a:hover {
             border-radius: 0px;
             border-style: solid;
         }
-        .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
-            margin-top: $gutter-sm;
+        @media all and (min-width: $mobile) {
+            .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
+                margin-top: $gutter-sm;
+            }
         }
         .gform_wrapper.gravity-theme .gform_footer, 
         .gform_wrapper.gravity-theme .gform_page_footer {
