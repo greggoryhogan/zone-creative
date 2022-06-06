@@ -14,19 +14,20 @@
         @media all and (max-width: $mobile) { 
             font-size: 3.375rem;
             line-height: 3.375rem;
+            max-width: 100%;
         }
     }
     h2, .font-bigger {
         font-size: 3rem;
-        line-height: 3rem;
+        line-height: 3.5rem;
         margin: 2rem 0;
         @media all and (max-width: $tablet) { 
             font-size: 2.25rem;
             line-height: 2.25rem;
         }
         @media all and (max-width: $mobile) { 
-            font-size: 1.5rem;
-            line-height: 1.5rem;
+            font-size: 2rem;
+            line-height: 2.25rem;
         }
     }
     h3, .font-normal {
@@ -40,7 +41,7 @@
     }
     h4, .font-smaller {
         font-size: 1.25rem;
-        line-height: 1.25rem;
+        line-height: 1.5rem;
         margin: 1.5rem 0;
         @media all and (max-width: $mobile) { 
             font-size: 1rem;
@@ -70,19 +71,50 @@
         display: inline-block;
         color: $black;
         background:$white;
-        border: 2px solid $gray;
+        border-color: $gray;
+        border-style: solid;
+        border-width: 1px;
         padding: $gutter-sm * .5 $gutter;
         border-radius: $gutter;
         font-size: .9rem;
         font-weight: bold;
         text-decoration: none;
-        transition: .2s border-color;
         margin-top: $gutter-sm;
+        position: relative;
         cursor: pointer;
+        &.gform_button {
+            padding: $gutter-sm $gutter;
+            transition: .2s border-color;
+            margin-top: 1px;
+            &:hover,
+            &:active,
+            &:focus {
+                border-color: $black;
+                border-width: 2px;
+                margin-top: 0px;
+                margin-left: -1px;
+                margin-bottom: 7px;
+            }
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: -1px;
+            height: calc(100% + 2px);
+            width: calc(100% + 2px);
+            border: 2px solid $black;
+            border-radius: $gutter;
+            opacity: 0;
+            transition: .2s opacity;
+        }
         &:hover,
         &:active,
         &:focus {
-            border-color: $black;
+            &:before,
+            &:after {
+                opacity: 1;    
+            }
         }
     }
     .text-center {
@@ -310,6 +342,18 @@
                             margin-bottom: 0;
                         }
                     }
+                    a {
+                        h3 {
+                            text-decoration: underline;
+                        }
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            h3 {
+                                text-decoration: none;
+                            }
+                        }
+                    }
                     .categories {
                         margin-top: $gutter-sm;
                         color: $light-gray;
@@ -319,12 +363,16 @@
                         }
                     }
                 }
-                @media all and (min-width: $tablet) { 
+                @media all and (min-width: $mobile) { 
                     &.feature-content {
                         color: $dark-gray;
                         p {
                             margin-top: 0;
                         }
+                    }
+                }
+                @media all and (min-width: $tablet) { 
+                    &.feature-content {
                         &.has-link {
                             display: grid;
                             grid-template-columns: auto 40%;
@@ -396,13 +444,19 @@
                     left: $gutter;
                     z-index: 3;
                     color: $white;
-                    @media all and(min-width: $mobile) {
+                    @media all and(min-width: $tablet) {
                         display: flex;
                         justify-content: space-between;
                         align-items: end;
                         .read-more {
+                            font-weight: bold;
                             margin-left: $gutter;
                         }
+                    }
+                    @media all and(max-width: $tablet) {
+                        bottom: $gutter-sm;
+                        width: calc(100% - #{$gutter-sm * 2});
+                        left: $gutter-sm;
                     }
                     .grid-heading {
                         flex: 1;
@@ -413,6 +467,9 @@
                     .read-more {
                         text-decoration: underline;
                         margin-top: $gutter-sm;
+                        @media all and(max-width: $tablet) {
+                            margin-top: $gutter-sm / 2;
+                        }
                     }
                 }
                 a {
@@ -458,9 +515,9 @@
                     }
                     .feature-image {
                         width: 100%;
-                        padding-bottom: 26%;
+                        padding-bottom: 30%;
                         @media all and (max-width: $mobile) {
-                            padding-bottom: 52%;
+                            padding-bottom: 61%;
                             margin-bottom: $gutter;
                         }
                         position: relative;
@@ -529,19 +586,25 @@
     &.testimonials {
         @media all and (min-width: $mobile) {
             &.two-column {
-                display: grid;
-                grid-template-columns: 50% 50%;
-                gap: $gutter-sm;
-                div {
-                    p {
-                        margin: 0 0 $gutter 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                .testimonial {
+                    flex: 0 0 50%;
+                    div {
+                        p {
+                            margin: 0 0 $gutter 0;
+                        }
                     }
                 }
             }
         }
         .testimonial {
             text-align: center;
-            padding: 0 $gutter $gutter;
+            padding: 0 #{$gutter * 2} $gutter;
+            @media all and (max-width: $tablet) {
+                padding: 0 $gutter $gutter;
+            }
             @media all and (max-width: $mobile) {
                 
                 &:first-of-type {

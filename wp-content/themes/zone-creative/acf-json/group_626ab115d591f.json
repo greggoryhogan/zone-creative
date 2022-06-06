@@ -2416,7 +2416,7 @@
                             "min": 0,
                             "max": 0,
                             "layout": "table",
-                            "button_label": "",
+                            "button_label": "Add Testimonial",
                             "sub_fields": [
                                 {
                                     "key": "field_62795d76d3539",
@@ -2759,5 +2759,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652366885
+    "modified": 1654535072
 }
