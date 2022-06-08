@@ -473,6 +473,9 @@ a:hover {
         .gform_validation_errors {
             margin-bottom: $gutter;
         }
+        .gform_wrapper .gfield_error .gfield_repeater_cell label, .gform_wrapper .gfield_error label, .gform_wrapper .gfield_error legend, .gform_wrapper .gfield_validation_message, .gform_wrapper .validation_message, .gform_wrapper [aria-invalid="true"] + label, .gform_wrapper label + [aria-invalid="true"] {
+            color: $black;
+        }
         @media all and (min-width: $mobile) {
             .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
                 width: 35%;
