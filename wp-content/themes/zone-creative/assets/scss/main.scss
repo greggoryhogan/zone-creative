@@ -12,6 +12,9 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
+*:focus {
+    outline: none;
+}
 html,body {
     margin: 0;
     padding: 0;
@@ -441,6 +444,34 @@ a:hover {
         .gform_wrapper.gravity-theme .gform_footer, 
         .gform_wrapper.gravity-theme .gform_page_footer {
             margin-top: $gutter-sm;
+        }
+        .gform_wrapper .gform_validation_errors,
+        .gform_wrapper .gfield_validation_message, 
+        .gform_wrapper .validation_message {
+            border-color: $black;
+            border-radius: 0px;
+            box-shadow: none;
+            background: #fff;
+            color: $black;
+            h2 {
+                color: $black;
+                > {
+                    color: $black;
+                }
+            }
+        }
+        .gform_wrapper .gfield_required {
+            color: $black;
+            font-size: inherit;
+        }
+        .gform_wrapper .validation_message {
+            padding: 0!important;
+            margin-top: 1px!important;
+            border: none!important;
+            font-style: italic;
+        }
+        .gform_validation_errors {
+            margin-bottom: $gutter;
         }
         @media all and (min-width: $mobile) {
             .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
