@@ -83,7 +83,7 @@
         position: relative;
         cursor: pointer;
         &.gform_button {
-            padding: $gutter-sm $gutter;
+            line-height: inherit;
             transition: .2s border-color;
             margin-top: 1px;
             &:hover,
