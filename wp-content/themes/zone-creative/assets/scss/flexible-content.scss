@@ -464,6 +464,10 @@
                         flex: 1;
                         h3 {
                             margin: 0;
+                            @media all and(max-width: $tablet) and (min-width: $mobile) {
+                                font-size: 1.25rem;
+                                line-height: 1.25rem;
+                            }
                         }
                     }
                     .read-more {
