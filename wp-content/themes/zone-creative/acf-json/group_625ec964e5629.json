@@ -100,6 +100,60 @@
             "maxlength": ""
         },
         {
+            "key": "field_62d0523a3ef4b",
+            "label": "Header\/Footer Scripts",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62d052523ef4c",
+            "label": "Header Scripts",
+            "name": "header_scripts",
+            "type": "textarea",
+            "instructions": "Code here will be added to the header of the website",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_62d0526e3ef4d",
+            "label": "Footer Scripts",
+            "name": "footer_scripts",
+            "type": "textarea",
+            "instructions": "Code here will be added to the footer of the website",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_627bf143ba704",
             "label": "Maintenance",
             "name": "",
@@ -185,5 +239,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652366772
+    "modified": 1657819814
 }

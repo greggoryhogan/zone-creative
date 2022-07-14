@@ -29,12 +29,31 @@ function zone_theme_support() {
 add_action( 'after_setup_theme', 'zone_theme_support' );
 
 /**
- * Favicon
+ * Favicon and Header Scripts
  */
-function zone_favicon() {
+function zone_header_scripts() {
     echo '<link rel="Shortcut Icon" type="image/x-icon" href="'.ZONE_THEME_URI.'/assets/img/fav.png" />';
+    if(function_exists('get_field')) {
+        $header_scripts = get_field('header_scripts','option');
+        if($header_scripts != '') {
+            echo $header_scripts;
+        }
+    }
 }
-add_action('wp_head', 'zone_favicon');
+add_action('wp_head', 'zone_header_scripts');
+
+/**
+ * Footer Scripts
+ */
+function zone_footer_scripts() {
+    if(function_exists('get_field')) {
+        $footer_scripts = get_field('footer_scripts','option');
+        if($footer_scripts != '') {
+            echo $footer_scripts;
+        }
+    }
+}
+add_action('wp_footer', 'zone_footer_scripts');
 
 /**
  * Add Secondary Nav Items to Primary for Mobile View
