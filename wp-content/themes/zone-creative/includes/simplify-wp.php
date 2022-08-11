@@ -60,7 +60,7 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 /**
  * Hide REST from non-registered users
  */
-add_filter( 'rest_authentication_errors', 'zone_hide_rest');
+//add_filter( 'rest_authentication_errors', 'zone_hide_rest');
 function zone_hide_rest( $result ) {
     if ( ! empty( $result ) ) {
         return $result;
