@@ -116,4 +116,5 @@ wp-content/mu-plugins/wpe-wp-sign-on-plugin*
 
 #Zone specific
 node_modules/
+/wp-content/themes/zone-creative/node_modules/
 package-lock.json
