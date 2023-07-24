@@ -321,7 +321,8 @@ a:hover {
                             text-decoration: none;
                         }
                         @media all and (max-width: $mobile) {
-                            color: $white;
+                            color: $black;
+                            background: $white;
                         }
                     }
                 }
@@ -378,13 +379,13 @@ a:hover {
                 opacity: 0;
                 z-index: -1;
                 transition: .5s opacity;
-                background: $black;
+                background: $white;
                 &.is-active {
                     opacity: 1;    
                 }
                 .header-menu {
                     a {
-                        padding: $gutter + (.5 * $gutter-sm) $gutter-sm;
+                        /*padding: $gutter + (.5 * $gutter-sm) $gutter-sm;*/
                         display: block;
                         border-bottom: 1px solid $nav-gray;
                         font-size: 1rem;
@@ -435,6 +436,9 @@ a:hover {
             border-width: 1px;
             border-radius: 0px;
             border-style: solid;
+            &.ginput_recaptcha {
+                border:none!important;
+            }
         }
         @media all and (min-width: $mobile) {
             .gform_wrapper.gravity-theme .left_label .gfield_label, .gform_wrapper.gravity-theme .right_label .gfield_label {
